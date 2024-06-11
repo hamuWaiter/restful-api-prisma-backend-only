@@ -9,7 +9,7 @@ import {
   Query,
 } from '@nestjs/common'
 import { PrismaService } from './prisma.service'
-import { User as UserModel, Post as PostModel, Prisma } from '@prisma/client'
+import { User as UserModel, Post as PostModel, Prisma, Site } from '@prisma/client';
 
 @Controller()
 export class AppController {
@@ -53,6 +53,26 @@ export class AppController {
   @Get('users')
   async getAllUsers(): Promise<UserModel[]> {
     return this.prismaService.user.findMany()
+  }
+
+  // 创建网站记录
+  @Post('site')
+  async createSite(
+    @Body() params: { title: string; url: string },
+  ): Promise<Site> {
+    const { title, url } = params
+    return this.prismaService.site.create({
+      data: {
+        title,
+        url
+      },
+    })
+  }
+
+  // 返回所有site记录
+  @Get('sites')
+  async getSiteLS(): Promise<Site[]> {
+    return this.prismaService.site.findMany()
   }
 
   @Get('user/:id/drafts')
