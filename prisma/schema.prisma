@@ -19,6 +19,15 @@ model Site {
   title      String
 }
 
+model Blog {
+  id         Int      @id @default(autoincrement())
+  createTime DateTime @default(now())
+  updateTime DateTime @updatedAt
+  isDelete   Boolean  @default(false)
+  url        String   @unique
+  title      String
+}
+
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique

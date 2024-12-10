@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "author": "",
   "scripts": {
+    "qsmy:start": "pnpm i && npm run migrate && npm start",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -16,6 +17,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate": "npx prisma migrate dev --name init",
+    "generate": "npx --no-install prisma generate",
     "start": "nest start",
     "dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
@@ -40,10 +42,12 @@
   },
   "dependencies": {
     "@nestjs/common": "10.3.6",
+    "@nestjs/config": "^3.2.3",
     "@nestjs/core": "10.3.6",
     "@nestjs/platform-express": "10.3.6",
     "@nestjs/swagger": "^7.3.1",
     "@prisma/client": "5.11.0",
+    "marked": "^15.0.3",
     "reflect-metadata": "0.2.1",
     "rimraf": "5.0.5",
     "rxjs": "7.8.1",
