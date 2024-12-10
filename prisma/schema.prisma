@@ -46,3 +46,12 @@ model Post {
   author    User?    @relation(fields: [authorId], references: [id])
   authorId  Int?
 }
+
+// 文件模型定义
+model File {
+  id        Int      @id @default(autoincrement())
+  name      String
+  path      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
