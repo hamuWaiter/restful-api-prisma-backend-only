@@ -1,5 +1,5 @@
 {
-  "name": "rest-nestjs",
+  "name": "qsmy",
   "version": "0.0.1",
   "private": true,
   "description": "",
@@ -7,6 +7,10 @@
   "author": "",
   "scripts": {
     "qsmy:start": "pnpm i && npm run migrate && npm start",
+    "migrate": "npx prisma migrate dev --name init",
+    "generate": "npx --no-install prisma generate",
+    "dev": "nest start --watch",
+    "start": "nest start",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -16,10 +20,6 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "migrate": "npx prisma migrate dev --name init",
-    "generate": "npx --no-install prisma generate",
-    "start": "nest start",
-    "dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/src/main"
   },
